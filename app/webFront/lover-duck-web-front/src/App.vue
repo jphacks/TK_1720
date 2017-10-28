@@ -57,6 +57,15 @@ export default {
   }
 }
 </script>
-<style lang="stylus">
-  @require './stylus/main'
+<style>
+* {
+  box-sizing: border-box;
+  font-family: '游ゴシック体','Yu Gothic','YuGothic',"Hiragino Sans","Hiragino Kaku Gothic Pro","ヒラギノ角ゴ Pro W3",'Roboto',Helvetica,Arial,"メイリオ","Meiryo",sans-serif;
+  letter-spacing: 1px;
+  line-height: 2em;
+}
+
+body {
+  margin: 0;
+}
 </style>
