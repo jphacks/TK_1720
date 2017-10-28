@@ -1,0 +1,118 @@
+カテゴリ,動作,"要
+ session","要
+ 暗号化",User/Admin,Role,PATH,IN,OUT(注釈付き),備考,version
+ユーザー,create,,,User,Auth,/api/auth/signup,"{
+  ""mail"": ""hoge@gmail.com"",
+  ""password"": ""hogehoge"",
+  ""name"": ""kanshiho"",
+  ""tel"": ""09000000000""
+}","{
+  ""session"": ""hafiosdakfbsdklxanl""
+}",,
+,,,,User,Auth,/api/auth/signin,"{
+  ""mail"": ""hoge@gmail.com"",
+  ""password"": ""fhasldflasdl""
+}","{
+  ""session"": ""hafiosdakfbsdklxanl""
+}",,
+,,,,User,Auth,/api/auth/password/edit,"{
+  ""old_password"": ""nakfndsalnlasd"",
+  ""new_password"": ""zkjfdnsalncas""
+}","{
+  ""message"": ""ok""
+}",,
+,,,,User,Auth,/api/auth/profile/edit,"{
+  ""name"": ""kanshiho"",
+  ""tel"": ""09000000000""
+}","{
+  ""message"": ""ok""
+}",,
+,duck登録,,,User,Duck,/api/duck/create,"{
+  ""unique_id"": ""asdkasdldcvas"",
+  ""postal_code"": ""1560000"",
+  ""address"": ""渋谷区松濤1-17-3"",
+  ""password"": ""nakdnsaln"",
+  ""name"": ""祖父duck""
+}","{
+  ""message"": ""ok""
+}",,
+,duck追加,,,User,Duck,/api/duck/register,"{
+  ""unique_id"": ""asdkasdldcvas"",
+  ""password"": ""nakdnsaln""
+}","{
+  ""message"": ""ok""
+}",,
+,duck一覧,,,User,Duck,/api/duck/list,{},"{
+ ""ducks"": [
+     {
+        ""name"": ""祖父duck"",
+        ""status"": true,
+        ""id"": 1
+     },
+     {
+        ""name"": ""祖母duck"",
+        ""status"": false,
+        ""id"": 2
+     }
+  ] 
+}","status = trueは入浴中
+status = falseは入浴中でない",
+,duck詳細,,,User,Duck,/api/duck/detail,"{
+  ""duck_id"": 1
+}","{
+  ""name"": ""祖父ダック"",
+  ""status"": true,
+  ""duck_id"": 1,
+  ""postal_code"": ""1560042"",
+  ""address"": ""渋谷区松濤1-17-3""
+}",,
+,daily log,,,User,Duck,/api/duck/dailylog,"{
+  ""duck_id"": 1,
+  ""per_page"": 5,
+  ""page"": 1
+}","{
+  ""daily_log"": [
+    {
+      ""started_at"": ""2017/10/28/23:11:11"",
+      ""ended_at"": ""2017/10/28/23:11:11""
+    },
+    {
+     ""started_at"": ""2017/10/28/23:11:11"",
+      ""ended_at"": ""2017/10/28/23:11:11""
+    }
+  ]
+}",,
+,alert log,,,User,Duck,/api/duck/alertlog,"{
+  ""duck_id"": 1,
+  ""per_page"": 5,
+  ""page"": 1
+}","{
+ ""alert"": [
+    {
+      ""called_at"": ""2017/10/28/23:11:11"",
+      ""alert_id"": 1,
+      ""status"": 2
+    },
+    {
+      ""called_at"": ""2017/10/28/23:11:11"",
+      ""alert_id"": 2,
+      ""status"": 1
+    }
+  ]
+}",,
+,,,,User,Duck,/api/duck/alertlog/update,"{ 
+  ""alert_id"": 1,
+  ""status"": 1
+}","{
+  ""message"": ""ok""
+}",,
+,,,,User,Duck,/api/duck/reactionlog,"{
+  ""alert_id"": 1
+}","{
+  ""status"": 1,
+  ""reacted_user"": [
+    ""父"", 
+    ""母"",
+    ""娘""
+  ]
+}",,
