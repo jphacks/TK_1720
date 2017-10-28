@@ -39,6 +39,18 @@ export default {
     })
     .catch(error => { callbackFailed(error) })
   },
+  authProfile (
+    params,
+    callback,
+    callbackFailed
+  ) {
+    return util.createMethod(params, url.ENDPOINTS.authProfile)
+    .then(response => {
+      let responseData = base.createCamel(response.data.data)
+      callback(responseData)
+    })
+    .catch(error => { callbackFailed(error) })
+  },
   authProfileEdit (
     params,
     callback,
