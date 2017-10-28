@@ -1,29 +1,32 @@
 <template>
   <div>
-    <p>duckId</p>
-    <input v-model="duckId" @input="sendDuckId(duckId)" />
-    <p>perPage</p>
-    <input v-model="perPage" @input="sendPerPage(perPage)" />
-    <p>page</p>
-    <input v-model="page" @input="sendPage(page)" />
-    <button @click="duckDailylogResponse">Check</button>
+    <div v-for="log in list">
+      {{ log }}
+    </div>
   </div>
 </template>
 <script>
 import {mapActions, mapGetters} from 'vuex'
 
 export default {
+  props: ['id'],
   data () {
     return {
       duckId: null,
-      perPage: null,
-      page: null
+      perPage: 5,
+      page: 1,
+      list: []
     }
   },
   computed: {
     ...mapGetters('duck', [
       'getDuckDailylogResponse'
     ])
+  },
+  watch: {
+    getDuckDailylogResponse (data) {
+      this.list = data.dailyLog
+    }
   },
   methods: {
     ...mapActions('duck', [
@@ -44,6 +47,13 @@ export default {
       this.updateDuckDailylogPage(page)
       this.page = page
     }
+  },
+  created () {
+    // do something after creating vue instance
+    this.sendDuckId(this.id)
+    this.sendPerPage(this.perPage)
+    this.sendPage(this.page)
+    this.duckDailylogResponse()
   }
 }
 </script>
