@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "bootstrap-vue": "^1.0.0-beta.9",
     "camelcase": "^4.1.0",
     "jquery": "^3.2.1",
     "lodash.startcase": "^4.4.0",

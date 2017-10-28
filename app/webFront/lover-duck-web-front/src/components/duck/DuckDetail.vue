@@ -15,6 +15,13 @@
   </div>
 </template>
 <script>
+import AlertLog from './api/AlertLog'
+
+export default {
+  components: {
+    AlertLog
+  }
+}
 </script>
 <style scoped>
 </style>

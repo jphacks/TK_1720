@@ -28,6 +28,13 @@ export default {
       'getAuthSignupResponse'
     ])
   },
+  watch: {
+    getAuthSignupResponse (data) {
+      if (data.accessToken) {
+        window.location.href = '/duck'
+      }
+    }
+  },
   methods: {
     ...mapActions('auth', [
       'updateAuthSignupMail',

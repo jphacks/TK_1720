@@ -22,6 +22,13 @@ export default {
       'getAuthPasswordEditResponse'
     ])
   },
+  watch: {
+    getAuthPasswordEditResponse (data) {
+      if (data.message === 'ok') {
+        window.location.href = '/profile'
+      }
+    }
+  },
   methods: {
     ...mapActions('auth', [
       'updateAuthPasswordEditOldPassword',
