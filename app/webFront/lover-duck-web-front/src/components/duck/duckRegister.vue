@@ -22,6 +22,15 @@ export default {
       'getDuckRegisterResponse'
     ])
   },
+  watch: {
+    getDuckRegisterResponse (data) {
+      if (data.message === 'ok') {
+        window.location.href = '/duck'
+      } else {
+        alert('通信エラー')
+      }
+    }
+  },
   methods: {
     ...mapActions('duck', [
       'updateDuckRegisterUniqueId',

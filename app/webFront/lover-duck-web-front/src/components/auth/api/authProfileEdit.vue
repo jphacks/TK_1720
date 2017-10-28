@@ -19,8 +19,19 @@ export default {
   },
   computed: {
     ...mapGetters('auth', [
-      'getAuthProfileEditResponse'
+      'getAuthProfileEditResponse',
+      'getAuthProfileResponse'
     ])
+  },
+  watch: {
+    getAuthProfileEditResponse (data) {
+      if (data.message === 'ok') {
+        alert('ok')
+        window.location.href = '/profile'
+      } else {
+        alert('error')
+      }
+    }
   },
   methods: {
     ...mapActions('auth', [

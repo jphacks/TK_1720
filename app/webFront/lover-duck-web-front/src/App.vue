@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <header-vue></header-vue>
     <router-view></router-view>
     <simplert :useRadius="true"
           :useIcon="true"
@@ -10,11 +11,13 @@
 
 <script>
 import Simplert from 'vue2-simplert'
+import HeaderVue from '@/components/Header'
 
 export default {
   name: 'app',
   components: {
-    Simplert
+    Simplert,
+    HeaderVue
   },
   computed: {
     // use a computed property to get the value from the store

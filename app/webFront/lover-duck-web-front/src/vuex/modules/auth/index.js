@@ -15,6 +15,9 @@ const state = {
     password: null
   },
   authSigninResponse: {},
+  authProfileRequest: {
+  },
+  authProfileResponse: {},
   authPasswordEditRequest: {
     oldPassword: null,
     newPassword: null
@@ -118,6 +121,33 @@ const actions = {
       commit('GOT_ERROR', 'パラメーターが空です', { root: true })
     }
   },
+  authProfileResponse (
+  {commit, state}
+  ) {
+    commit('START_CONNECTION', null, { root: true })
+    if (base.nullCheck(state.authProfileRequest)) {
+      manager.authProfile(
+        state.authProfileRequest,
+        response => {
+          if (response.message === 'ok' || response.message === undefined || !response.message.match(/error/)) {
+            if (response.accessToken) {
+              sessionStorage.setItem('accessToken', response.accessToken)
+            }
+            commit('GOT_AUTH_PROFILE_RESPONSE', response)
+            commit('END_CONNECTION', null, { root: true })
+          } else {
+            commit('GOT_ERROR', response.message, { root: true })
+          }
+        },
+        error => {
+          error = base.sessionExpired(error.toString())
+          commit('GOT_ERROR', '通信エラーです' + '\n' + error, { root: true })
+        }
+      )
+    } else {
+      commit('GOT_ERROR', 'パラメーターが空です', { root: true })
+    }
+  },
   updateAuthPasswordEditOldPassword (
     { commit, state },
       params
@@ -205,6 +235,9 @@ const getters = {
   getAuthSigninResponse: state => {
     return state.authSigninResponse
   },
+  getAuthProfileResponse: state => {
+    return state.authProfileResponse
+  },
   getAuthPasswordEditResponse: state => {
     return state.authPasswordEditResponse
   },
@@ -237,6 +270,9 @@ const mutations = {
   },
   GOT_AUTH_SIGNIN_RESPONSE (state, data) {
     state.authSigninResponse = data
+  },
+  GOT_AUTH_PROFILE_RESPONSE (state, data) {
+    state.authProfileResponse = data
   },
   UPDATE_AUTH_PASSWORD_EDIT_OLD_PASSWORD (state, data) {
     Vue.set(state.authPasswordEditRequest, 'oldPassword', data)

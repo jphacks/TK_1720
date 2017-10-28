@@ -22,6 +22,13 @@ export default {
       'getAuthSigninResponse'
     ])
   },
+  watch: {
+    getAuthSigninResponse (data) {
+      if (data.accessToken) {
+        window.location.href = '/duck'
+      }
+    }
+  },
   methods: {
     ...mapActions('auth', [
       'updateAuthSigninMail',

@@ -5,6 +5,7 @@ export const ENDPOINTS = {
   authSignin: '/api/auth/signin',
   authPasswordEdit: '/api/auth/password/edit',
   authProfileEdit: '/api/auth/profile/edit',
+  authProfile: '/api/auth/profile',
   // duck
   duckCreate: '/api/duck/create',
   duckRegister: '/api/duck/register',
