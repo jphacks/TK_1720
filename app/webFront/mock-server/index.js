@@ -37,6 +37,16 @@ app.post('/api/auth/profile/edit', function (req, res) {
 });
 });
 
+app.post('/api/auth/profile', function (req, res) {
+  res.send({
+	data: {
+      "mail": "hoge@gmail.com",
+      "name": "kanshiho",
+      "tel": "09000000000"
+	}
+});
+});
+
 app.post('/api/duck/create', function (req, res) {
   res.send({
 	data: {
