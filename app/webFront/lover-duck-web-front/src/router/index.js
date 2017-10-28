@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 // import Hello from '@/components/pages/Hello/Index'
 
+import LP from '@/components/LP'
 // import Hoge from '@/components/fuga/HogeHoge'
 import Signin from '@/components/auth/api/authSignin'
 import Signup from '@/components/auth/api/authSignup'
@@ -9,8 +10,8 @@ import Profile from '@/components/auth/api/authProfile'
 import ProfileEdit from '@/components/auth/api/authProfileEdit'
 import PasswordEdit from '@/components/auth/api/authPasswordEdit'
 
-import CreateDuck from '@/components/duck/api/duckCreate'
-import RegisterDuck from '@/components/duck/api/duckRegister'
+import CreateDuck from '@/components/duck/duckCreate'
+import RegisterDuck from '@/components/duck/duckRegister'
 import DuckTop from '@/components/duck/Top'
 import DuckDetail from '@/components/duck/DuckDetail'
 
@@ -29,6 +30,11 @@ Vue.use(Router)
 export default new Router({
   mode: 'history',
   routes: [
+    {
+      path: '/',
+      name: 'LP',
+      component: LP
+    },
     {
       path: '/signin',
       name: 'Signin',
@@ -65,12 +71,12 @@ export default new Router({
       component: RegisterDuck
     },
     {
-      path: 'duck',
+      path: '/duck',
       name: 'DuckTop',
       component: DuckTop
     },
     {
-      path: 'duck',
+      path: '/duck/detail/:id',
       name: 'DuckDetail',
       component: DuckDetail
     }
