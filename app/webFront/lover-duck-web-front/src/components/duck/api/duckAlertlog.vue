@@ -4,12 +4,61 @@
       {{ log }}
       <button @click="updateAlertId(log.alertId)">対応する</button>
       <div class="modal" v-if="toggle">
-        <button @click="updateAlertstatus(0)">対応中</button>
-        <button @click="updateAlertstatus(1)">対応済み</button>
+        <div class="white-back">
+          <h3>ダックの状態を変更します</h3>
+          <div class="button-wrapper">
+            <button class="update-button" @click="updateAlertstatus(0)">対応中</button>
+            <button class="update-button" @click="updateAlertstatus(1)">対応済み</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
+<style scoped>
+  .modal  {
+    align-items: center;
+    background-color: rgba(0,0,0,0.5);
+    bottom: 0;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+  }
+
+  .white-back {
+    background-color: white;
+    border-radius: 4px;
+    height: 250px;
+    opacity: 1;
+    width: 50%;
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+  .button-wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  button {
+    background-color: #f2f2f2;
+    border: none;
+    border-radius: 4px;
+  }
+
+  .update-button {
+    margin: 20px 40px;
+    padding: 20px;
+    width: 200px;
+  }
+</style>
 <script>
 import {mapActions, mapGetters} from 'vuex'
 
