@@ -1,13 +1,21 @@
 <template>
   <div>
+    <div v-if="toggle">
+      <h3>{{ getDuckDetailResponse.name }}</h3>
+      <h3>{{ getDuckDetailResponse.status }}</h3>
+      <h3>{{ getDuckDetailResponse.postalCode }}</h3>
+      <h3>{{ getDuckDetailResponse.address }}</h3>
+    </div>
     <p>
-      duck name
+      <h2>Daily Log</h2>
+      <daily-log
+       :id="duckId"
+      ></daily-log>
     </p>
     <p>
-      daily log
-    </p>
-    <p>
-      alert log
+      <alert-log
+        :id="duckId"
+      ></alert-log>
     </p>
     <p>
       alert status 変更
@@ -15,11 +23,45 @@
   </div>
 </template>
 <script>
-import AlertLog from './api/AlertLog'
+import {mapActions, mapGetters} from 'vuex'
+import DailyLog from './api/duckDailylog'
+import AlertLog from './api/duckAlertlog'
 
 export default {
   components: {
+    DailyLog,
     AlertLog
+  },
+  data () {
+    return {
+      duckId: null,
+      toggle: false
+    }
+  },
+  computed: {
+    ...mapGetters('duck', [
+      'getDuckDetailResponse'
+    ])
+  },
+  watch: {
+    getDuckDetailResponse (data) {
+      this.toggle = true
+    }
+  },
+  methods: {
+    ...mapActions('duck', [
+      'updateDuckDetailDuckId',
+      'duckDetailResponse'
+    ]),
+    sendDuckId (duckId) {
+      this.updateDuckDetailDuckId(duckId)
+      this.duckId = duckId
+    }
+  },
+  created () {
+    // do something after creating vue instance
+    this.sendDuckId(this.$route.params.id)
+    this.duckDetailResponse()
   }
 }
 </script>

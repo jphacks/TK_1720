@@ -4,9 +4,10 @@
     <div v-for="duck in list">
       <h1>{{ duck.name }}</h1>
       <h4>
-        <span v-if="duck.status">入浴中</span>
-        <span v-else>現在入浴していません</span>
+        <span v-if="duck.status">in the bath</span>
+        <span v-else>not in the bath</span>
       </h4>
+      <router-link :to="{ name: 'DuckDetail', params: { id: duck.id}}">watch!</router-link>
     </div>
   </div>
 </template>
