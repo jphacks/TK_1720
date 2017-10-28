@@ -34,7 +34,7 @@
 h1, p, a {
   color: #fff;
   text-align: center;
-  text-shadow: 1px 1px 100px orange;
+  text-shadow: 1px 1px 100px orange 0.5;
 }
 
 a {
