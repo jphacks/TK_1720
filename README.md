@@ -57,9 +57,9 @@
 * Vue.js: web application front, using vuex
 
 #### [デバイス](app/inTheDuck)
-* [Arduino nano](http://www.aitendo.com/product/10700)
-* [加速度センサ](https://strawberry-linux.com/catalog/items?code=12114)
-* [Bluetoothモジュール](http://www.aitendo.com/product/9905)
+* Arduino nano
+* 加速度センサ
+* Bluetoothモジュール
 
 ### 研究内容・事前開発プロダクト（任意）
 
