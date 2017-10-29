@@ -33,7 +33,7 @@ export default {
   },
   watch: {
     getDuckCreateResponse (data) {
-      if (data.message === 'ok') {
+      if (data.message === 'OK') {
         window.location.href = '/duck'
       } else {
         alert('通信エラー')

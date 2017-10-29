@@ -24,7 +24,7 @@ export default {
   },
   watch: {
     getDuckRegisterResponse (data) {
-      if (data.message === 'ok') {
+      if (data.message === 'OK') {
         window.location.href = '/duck'
       } else {
         alert('通信エラー')
