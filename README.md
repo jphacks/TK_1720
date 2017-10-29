@@ -1,4 +1,4 @@
-# Lover Duck
+# Lover Duck [実際のApp](http://52.69.32.105:3000/)
 
 [![LoverDuck](https://github.com/jphacks/TK_1720/blob/master/app/images/main.png)](https://youtu.be/u9JsaFCgCrA)
 
@@ -53,7 +53,7 @@
 #### フレームワーク・ライブラリ・モジュール
 * python: data analysis, ble serial
 * rails: main application, automatic alert, life log
-* html / css
+* Vue.js: web application front, using vuex
 
 #### デバイス
 * arduino
