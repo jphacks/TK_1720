@@ -43,7 +43,7 @@ export default {
   },
   watch: {
     getDuckDailylogResponse (data) {
-      this.list = data.dailyLog
+      this.list = data
     }
   },
   methods: {

@@ -1,25 +1,33 @@
 <!-- status -->
 <template>
-  <div class="container">
-    <div class="duck" v-for="duck in list">
-      <router-link :to="{ name: 'DuckDetail', params: { id: duck.id}}">
-        <div class="duck-content">
-          <img class="duck-image" src="../../assets/duck.png" alt="duck image">
-          <h1>{{ duck.name }}</h1>
-          <h4>
-            <span class="in" v-if="duck.status">入浴中</span>
-            <span v-else>入浴していません</span>
-          </h4>
-        </div>
-      </router-link>
-    </div>
-    <div class="button">
-      <router-link :to="{ name: 'CreateDuck'}"><button>Duckを登録</button></router-link>
-      <router-link :to="{ name: 'RegisterDuck'}"><button>Duckを追加</button></router-link>
+  <div class="all">
+    <div class="container">
+      <div class="duck" v-for="duck in list">
+        <router-link :to="{ name: 'DuckDetail', params: { id: duck.id}}">
+          <div class="duck-content">
+            <img class="duck-image" src="../../assets/duck.png" alt="duck image">
+            <h1>{{ duck.name }}</h1>
+            <h4>
+              <span class="in" v-if="duck.status">入浴中</span>
+              <span v-else>入浴していません</span>
+            </h4>
+          </div>
+        </router-link>
+      </div>
+      <div class="button">
+        <router-link :to="{ name: 'CreateDuck'}"><button>Duckを登録</button></router-link>
+        <router-link :to="{ name: 'RegisterDuck'}"><button>Duckを追加</button></router-link>
+      </div>
     </div>
   </div>
 </template>
 <style scoped>
+  .all {
+    width: 100%;
+    height: 100vh;
+    background-color: #fcf8e3;
+    padding-top: 100px;
+  }
   .container {
     margin-left: 200px;
   }
@@ -28,13 +36,11 @@
     background-color: #f6f6f6;
     border-radius: 4px;
     box-shadow: 0px 2px 4px #ccc;
-    margin: 30px 200px 15px 0;
+    margin: 0 200px 15px 0;
     transition: 0.3s;
   }
 
   .button {
-    display: inline-block;
-    margin: 0 auto;
   }
 
   router-link {
@@ -64,6 +70,20 @@
   .duck:hover {
     background-color: #f2f2f2;
     box-shadow: none;
+  }
+
+  button {
+    background-color: white;
+    border: none;
+    border-radius: 4px;
+    color: orange;
+    display: inline-block;
+    font-size: 14px;
+    margin: 10px auto;
+    padding: 10px 40px;
+    text-decoration: none;
+    width: 200px;
+    cursor: pointer;
   }
 </style>
 <script>

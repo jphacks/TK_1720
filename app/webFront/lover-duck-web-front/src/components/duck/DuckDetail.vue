@@ -1,31 +1,40 @@
 <template>
-  <div class="container">
-    <div v-if="toggle">
-      <h1>{{ getDuckDetailResponse.name }}</h1>
-      <span class="in" v-if="getDuckDetailResponse.status">入浴中</span>
-        <span v-else>not in the bath</span>
-      <h3>
-        〒{{ getDuckDetailResponse.postalCode }}
-        {{ getDuckDetailResponse.address }}
-      </h3>
+  <div class="all">
+    <div class="container">
+      <div v-if="toggle">
+        <h1>{{ getDuckDetailResponse.name }}</h1>
+        <span class="in" v-if="getDuckDetailResponse.status">入浴中</span>
+          <span v-else>not in the bath</span>
+        <h3>
+          〒{{ getDuckDetailResponse.postalCode }}
+          {{ getDuckDetailResponse.address }}
+        </h3>
+      </div>
+      <p class="alert">
+        <h2>Alert Log</h2>
+        <alert-log
+          :id="duckId"
+        ></alert-log>
+      </p>
+      <p>
+        <h2>Daily Log</h2>
+        <daily-log
+         :id="duckId"
+        ></daily-log>
+      </p>
     </div>
-    <p class="alert">
-      <h2>Alert Log</h2>
-      <alert-log
-        :id="duckId"
-      ></alert-log>
-    </p>
-    <p>
-      <h2>Daily Log</h2>
-      <daily-log
-       :id="duckId"
-      ></daily-log>
-    </p>
   </div>
 </template>
 <style scoped>
+  .all {
+    width: 100%;
+    height: 100vh;
+    background-color: #fcf8e3;
+    padding-top: 100px;
+  }
+
   .container {
-    margin: 100px 200px;
+    margin: 0 200px;
   }
 
   .in {

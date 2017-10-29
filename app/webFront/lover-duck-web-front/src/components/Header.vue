@@ -1,6 +1,8 @@
 <template>
   <div>
-    <img src="../assets/logo_horizontal.svg" alt="lover duck">
+    <router-link :to="{ name: 'LP'}">
+      <img src="../assets/logo_horizontal.svg" alt="lover duck" />
+    </router-link>
   </div>
 </template>
 <style scoped>

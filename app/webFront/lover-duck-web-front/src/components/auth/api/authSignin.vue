@@ -1,10 +1,16 @@
 <template>
   <div class="signin">
+    <div class="alert">
+      JPHACKS 審査員のみなさんへ<br />
+      mail: test@gmail.com <br />
+      password: test, <br />
+      でsigninしてみてください。<br />
+    </div>
     <div class="container">
       <h1>ログイン</h1>
-      <p>メールアドレス</p>
+      <p class="params">メールアドレス</p>
       <input v-model="mail" @input="sendMail(mail)" />
-      <p>パスワード</p>
+      <p class="params">パスワード</p>
       <input v-model="password" @input="sendPassword(password)" />
       <button @click="authSigninResponse">ログインする</button>
     </div>
@@ -22,9 +28,11 @@
 }
 
 .container {
-  margin: 0 30%;
   padding-top: 100px;
-  width: 40%
+  display: block;
+  width: 30%;
+  text-align: center;
+  margin: 0 auto;
 }
 
 h1 {
@@ -53,10 +61,27 @@ button {
   color: orange;
   display: block;
   font-size: 14px;
-  margin: 60px 0;
+  margin: 60px auto;
   padding: 10px 40px;
   text-decoration: none;
   width: 200px;
+}
+
+.params {
+  text-align: left;
+  margin: 0 10%;
+}
+
+.alert {
+  display: inline-block;
+  position: fixed;
+  bottom:0;
+  right:0;
+  font-size: 5px;
+  text-align: center;
+  padding: 50px;
+  margin: 10px;
+  background-color: #fcf8e3!important;
 }
 </style>
 <script>

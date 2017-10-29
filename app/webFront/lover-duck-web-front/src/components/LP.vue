@@ -1,5 +1,12 @@
 <template>
   <div class="lp">
+    <div class="alert">
+      JPHACKS 審査員のみなさんへ<br />
+      mail: test@gmail.com <br />
+      password: test, <br />
+      でsigninしてみてください。<br />
+      <a href="/signin" class="signin">signinはこちら</a>
+    </div>
     <img class="logo" src="../assets/loverduck_logo.svg" />
     <h1>大切な人の、大切な時間と命を見守る。</h1>
     <p>
@@ -38,6 +45,11 @@ h1, p, a {
   text-shadow: 1px 1px 100px orange 0.5;
 }
 
+.signin {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 a {
   background-color: white;
   border-radius: 4px;
@@ -47,5 +59,17 @@ a {
   padding: 10px 40px;
   text-decoration: none;
   width: 200px;
+}
+
+.alert {
+  display: inline-block;
+  position: fixed;
+  bottom:0;
+  right:0;
+  font-size: 5px;
+  text-align: center;
+  padding: 50px 50px 30px;
+  margin: 10px;
+  background-color: #fcf8e3;
 }
 </style>

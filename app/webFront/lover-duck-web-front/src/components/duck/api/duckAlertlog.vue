@@ -13,9 +13,9 @@
             <th scope="row">{{ list.indexOf(log) + 1 }}</th>
             <td>{{ log.calledAt }}</td>
             <td>
-              <span v-if="log.status === 0">対応済み</span>
-              <span v-if="log.status === 1">対応中</span>
-              <span v-if="log.status === 2">未対応</span>
+              <span v-if="log.status === 'completed'">対応済み</span>
+              <span v-if="log.status === 'not_completed'">対応中</span>
+              <span v-if="log.status === 'calling'">未対応</span>
             </td>
             <td>
               <button @click="updateAlertId(log.alertId)">対応する</button>
@@ -24,8 +24,8 @@
               <div class="white-back">
                 <h3>ダックの状態を変更します</h3>
                 <div class="button-wrapper">
-                  <button class="update-button" @click="updateAlertstatus(0)">対応中</button>
-                  <button class="update-button" @click="updateAlertstatus(1)">対応済み</button>
+                  <button class="update-button" @click="updateAlertstatus(1)">対応中</button>
+                  <button class="update-button" @click="updateAlertstatus(2)">対応済み</button>
                 </div>
               </div>
             </div>
@@ -102,7 +102,7 @@ export default {
   },
   watch: {
     getDuckAlertlogResponse (data) {
-      this.list = data.alert
+      this.list = data
     },
     getDuckAlertlogUpdateResponse (data) {
       this.toggle = false

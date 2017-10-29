@@ -2,13 +2,13 @@
   <div class="signup">
     <div class="container">
       <h1>アカウント登録</h1>
-      <p>メールアドレス</p>
+      <p class="params">メールアドレス</p>
       <input v-model="mail" @input="sendMail(mail)" />
-      <p>パスワード</p>
+      <p class="params">パスワード</p>
       <input v-model="password" @input="sendPassword(password)" />
-      <p>氏名</p>
+      <p class="params">氏名</p>
       <input v-model="name" @input="sendName(name)" />
-      <p>電話番号</p>
+      <p class="params">電話番号</p>
       <input v-model="tel" @input="sendTel(tel)" />
       <button @click="authSignupResponse">登録する</button>
     </div>
@@ -25,10 +25,17 @@
     background-attachment: fixed;
   }
 
+  .params {
+    text-align: left;
+    margin: 0 10%;
+  }
+
   .container {
-    margin: 0 30%;
     padding-top: 100px;
-    width: 40%
+    display: block;
+    width: 30%;
+    text-align: center;
+    margin: 0 auto;
   }
 
   h1 {
@@ -57,7 +64,7 @@
     color: orange;
     display: block;
     font-size: 14px;
-    margin: 60px 0;
+    margin: 60px auto;
     padding: 10px 40px;
     text-decoration: none;
     width: 200px;

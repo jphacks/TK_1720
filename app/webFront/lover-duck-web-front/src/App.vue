@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <header-vue></header-vue>
-    <router-view></router-view>
+    <div class="content">
+      <router-view></router-view>
+    </div>
     <simplert :useRadius="true"
           :useIcon="true"
           ref="simplert">
@@ -64,6 +66,9 @@ export default {
   letter-spacing: 1px;
   line-height: 2em;
   text-decoration: none;
+}
+
+.content {
 }
 
 body {
