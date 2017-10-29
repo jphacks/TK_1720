@@ -18,14 +18,14 @@
               <span v-if="log.status === 'calling'">未対応</span>
             </td>
             <td>
-              <button @click="updateAlertId(log.alertId)">対応する</button>
+              <button @click="updateAlertId(log.id)">対応する</button>
             </td>
             <div class="modal" v-if="toggle">
               <div class="white-back">
                 <h3>ダックの状態を変更します</h3>
                 <div class="button-wrapper">
                   <button class="update-button" @click="updateAlertstatus(1)">対応中</button>
-                  <button class="update-button" @click="updateAlertstatus(2)">対応済み</button>
+                  <button class="update-button" @click="updateAlertstatus(0)">対応済み</button>
                 </div>
               </div>
             </div>
@@ -106,6 +106,7 @@ export default {
     },
     getDuckAlertlogUpdateResponse (data) {
       this.toggle = false
+      this.duckAlertlogResponse()
     }
   },
   methods: {
