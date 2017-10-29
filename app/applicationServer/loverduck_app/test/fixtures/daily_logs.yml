@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_at: 2017-10-28 14:48:10
+  end_at: 2017-10-28 14:48:10
+  duck_id: 1
+
+two:
+  start_at: 2017-10-28 14:48:10
+  end_at: 2017-10-28 14:48:10
+  duck_id: 1
