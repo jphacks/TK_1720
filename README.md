@@ -1,6 +1,6 @@
 # Lover Duck
 
-[![LoverDuck](https://github.com/jphacks/TK_1720/blob/master/app/images/all_slides.png)](https://youtu.be/u9JsaFCgCrA)
+[![LoverDuck](https://github.com/jphacks/TK_1720/blob/master/app/images/main.png)](https://youtu.be/u9JsaFCgCrA)
 
 ## 製品概要
 ### お風呂 X  Tech
@@ -13,7 +13,7 @@
 - 本ハッカソンにおいて我々は, これらの問題を解決し、より楽しくお風呂を楽しみながら、改修工事などをすることなく, 画像による検出に頼ることなく, 加速度と物音により, お風呂で意識を失っている状態を検知し, 毎年5000人以上の命を救う**Loverduck**を開発した.
 
 
-[![LoverDuck](https://github.com/jphacks/TK_1720/blob/master/app/images/slides.png)](https://youtu.be/u9JsaFCgCrA)
+[![LoverDuck](https://github.com/jphacks/TK_1720/blob/master/app/images/all_slides.png)](https://youtu.be/u9JsaFCgCrA)
 
 ### 製品説明（具体的な製品の説明）
 - 入浴が開始されると, リモートサーバー(python)に加速度・物音の状態を送信する.
