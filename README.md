@@ -35,10 +35,6 @@
 #### 5. 特徴5
 - ラジオが聴けたり, ランプになったりとお風呂で便利に使える機能がある.
 
-
-[![LoverDuck](https://github.com/jphacks/TK_1720/blob/master/app/images/ducks.png)](https://youtu.be/u9JsaFCgCrA)
-[![LoverDuck](https://github.com/jphacks/TK_1720/blob/master/app/images/form.png)](https://youtu.be/u9JsaFCgCrA)
-
 ### 解決出来ること
 - 毎年5000人の方々の命を明るく, そして安く温かい方法で救う.
 
@@ -70,3 +66,11 @@
 ### 独自開発技術（Hack Dayで開発したもの）
 #### 2日間に開発した独自の機能・技術
 * 水面の加速度から人が入浴中 / 溺れている を識別するデータ解析(お風呂の画像を取るのはプライバシー上危険なため,他のセンサを活用した.)
+
+#### アプリケーション画面
+[![LoverDuck](https://github.com/jphacks/TK_1720/blob/master/app/images/ducks.png)](https://youtu.be/u9JsaFCgCrA)
+[![LoverDuck](https://github.com/jphacks/TK_1720/blob/master/app/images/form.png)](https://youtu.be/u9JsaFCgCrA)
+
+#### 利用動画
+![demo](https://github.com/jphacks/TK_1720/blob/master/how-to-use.gif)
+
