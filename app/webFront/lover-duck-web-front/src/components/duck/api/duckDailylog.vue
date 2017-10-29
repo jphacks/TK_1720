@@ -11,8 +11,8 @@
       <tbody>
         <tr v-for="log in list">
           <th scope="row">{{ list.indexOf(log) + 1 }}</th>
-          <td>{{ log.startedAt }}</td>
-          <td>{{ log.endedAt }}</td>
+          <td>{{ log.startAt }}</td>
+          <td>{{ log.endAt }}</td>
         </tr>
       </tbody>
     </table>
