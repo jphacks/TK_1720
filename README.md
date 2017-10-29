@@ -56,10 +56,10 @@
 * rails: main application, automatic alert, life log
 * Vue.js: web application front, using vuex, flux architecture
 
-#### デバイス
-* arduino
+#### [デバイス](app/inTheDuck)
+* Arduino nano
 * 加速度センサ
-* bluetooth 通信モジュール
+* Bluetoothモジュール
 
 ### 研究内容・事前開発プロダクト（任意）
 
