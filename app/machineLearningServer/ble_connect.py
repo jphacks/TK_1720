@@ -10,7 +10,7 @@ class LoverDuck(object):
     def __init__(self):
         self.t = 0
         self.last_move_t = 0
-        self.LIMIT_TIME = 10000 #ms
+        self.LIMIT_TIME = 3000 #ms
         self.MOVE_THRESHOLD = 1000
         self.get_base_value()
 
@@ -45,7 +45,9 @@ class LoverDuck(object):
                     pass
                 if self.t - self.last_move_t > self.LIMIT_TIME:
                     print("No Movement")
-                    self.__post_to_Kanshiho()
+                    self.__alert_post_to_Kanshiho()
+                    self.__alert_to_duck(ser)
+                    break
             ser.close()
 
     def __judge_if_move(self, x, y, z):
@@ -56,7 +58,24 @@ class LoverDuck(object):
         else:
             return False
 
-    def __post_to_Kanshiho(self):
+    def __start_post_to_Kanshiho(self):
+        """Kanshihoさんにお風呂に入ったことを伝える
+        """
+        url = "https://loverduck.herokuapp.com/api/bath/create"
+        method = "POST"
+        headers = {"Content-Type" : "application/json"}
+
+        # PythonオブジェクトをJSONに変換する
+        obj = {"unique_id": "qe3443rfq43"} 
+        json_data = json.dumps(obj).encode("utf-8")
+        # httpリクエストを準備してPOST
+        request = urllib.request.Request(url, data=json_data, method=method, headers=headers)
+        print(request.data)
+        with urllib.request.urlopen(request) as response:
+            response_body = response.read().decode("utf-8")
+            print(response_body)
+
+    def __alert_post_to_Kanshiho(self):
         """kanshihoさんにラブコールポストを送る"""
         url = "https://loverduck.herokuapp.com/api/alert/create"
         method = "POST"
@@ -72,6 +91,11 @@ class LoverDuck(object):
             response_body = response.read().decode("utf-8")
             print(response_body)
 
+    def __alert_to_duck(self, ser):    
+        flag=bytes("a",'utf-8')
+        #シリアル通信で文字を送信する際は, byte文字列に変換する
+        ser.write(flag)
+
 if __name__=="__main__":
     loverduck = LoverDuck()
-    #loverduck.connect_ble()
+    loverduck.connect_ble()
