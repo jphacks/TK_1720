@@ -13,6 +13,10 @@
         </div>
       </router-link>
     </div>
+    <div class="button">
+      <router-link :to="{ name: 'CreateDuck'}"><button>Duckを追加</button></router-link>
+      <router-link :to="{ name: 'CreateDuck'}"><button>Duckを新しく登録</button></router-link>
+    </div>
   </div>
 </template>
 <style scoped>
@@ -26,6 +30,11 @@
     box-shadow: 0px 2px 4px #ccc;
     margin: 30px 200px 15px 0;
     transition: 0.3s;
+  }
+
+  .button {
+    display: inline-block;
+    margin: 0 auto;
   }
 
   router-link {

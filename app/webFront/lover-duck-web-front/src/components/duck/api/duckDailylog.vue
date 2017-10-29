@@ -1,10 +1,28 @@
 <template>
   <div>
-    <div v-for="log in list">
-      {{ log }}
-    </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>入浴時間</th>
+          <th>退室時間</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="log in list">
+          <th scope="row">{{ list.indexOf(log) + 1 }}</th>
+          <td>{{ log.startedAt }}</td>
+          <td>{{ log.endedAt }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
+<style>
+td {
+  padding: 0 20px;
+}
+</style>
 <script>
 import {mapActions, mapGetters} from 'vuex'
 

@@ -21,9 +21,10 @@
   position: absolute;
   top: 0;
   width: 100vw;
-  height: 100vh;
+  height: 130vh;
   background-image: url("../assets/background.jpg");
   background-size: cover;
+  background-attachment: fixed;
 }
 
 .logo {

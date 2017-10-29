@@ -9,7 +9,8 @@
         {{ getDuckDetailResponse.address }}
       </h3>
     </div>
-    <p>
+    <p class="alert">
+      <h2>Alert Log</h2>
       <alert-log
         :id="duckId"
       ></alert-log>
@@ -20,14 +21,11 @@
        :id="duckId"
       ></daily-log>
     </p>
-    <p>
-      alert status 変更
-    </p>
   </div>
 </template>
 <style scoped>
   .container {
-    margin: 0 200px;
+    margin: 100px 200px;
   }
 
   .in {

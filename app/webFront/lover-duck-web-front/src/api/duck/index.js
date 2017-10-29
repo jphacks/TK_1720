@@ -10,7 +10,7 @@ export default {
   ) {
     return util.createMethod(params, url.ENDPOINTS.duckCreate)
     .then(response => {
-      let responseData = base.createCamel(response.data.data)
+      let responseData = base.createCamel(response.data)
       callback(responseData)
     })
     .catch(error => { callbackFailed(error) })
@@ -22,7 +22,7 @@ export default {
   ) {
     return util.createMethod(params, url.ENDPOINTS.duckRegister)
     .then(response => {
-      let responseData = base.createCamel(response.data.data)
+      let responseData = base.createCamel(response.data)
       callback(responseData)
     })
     .catch(error => { callbackFailed(error) })
@@ -34,7 +34,7 @@ export default {
   ) {
     return util.createMethod(params, url.ENDPOINTS.duckList)
     .then(response => {
-      let responseData = base.createCamel(response.data.data)
+      let responseData = base.createCamel(response.data)
       callback(responseData)
     })
     .catch(error => { callbackFailed(error) })
@@ -46,7 +46,7 @@ export default {
   ) {
     return util.createMethod(params, url.ENDPOINTS.duckDetail)
     .then(response => {
-      let responseData = base.createCamel(response.data.data)
+      let responseData = base.createCamel(response.data)
       callback(responseData)
     })
     .catch(error => { callbackFailed(error) })
@@ -58,7 +58,7 @@ export default {
   ) {
     return util.createMethod(params, url.ENDPOINTS.duckDailylog)
     .then(response => {
-      let responseData = base.createCamel(response.data.data)
+      let responseData = base.createCamel(response.data)
       callback(responseData)
     })
     .catch(error => { callbackFailed(error) })
@@ -70,7 +70,7 @@ export default {
   ) {
     return util.createMethod(params, url.ENDPOINTS.duckAlertlog)
     .then(response => {
-      let responseData = base.createCamel(response.data.data)
+      let responseData = base.createCamel(response.data)
       callback(responseData)
     })
     .catch(error => { callbackFailed(error) })
@@ -82,7 +82,7 @@ export default {
   ) {
     return util.createMethod(params, url.ENDPOINTS.duckAlertlogUpdate)
     .then(response => {
-      let responseData = base.createCamel(response.data.data)
+      let responseData = base.createCamel(response.data)
       callback(responseData)
     })
     .catch(error => { callbackFailed(error) })
@@ -94,7 +94,7 @@ export default {
   ) {
     return util.createMethod(params, url.ENDPOINTS.duckReactionlog)
     .then(response => {
-      let responseData = base.createCamel(response.data.data)
+      let responseData = base.createCamel(response.data)
       callback(responseData)
     })
     .catch(error => { callbackFailed(error) })
