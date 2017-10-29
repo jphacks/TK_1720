@@ -1,7 +1,9 @@
 #coding utf-8
+import json
 import numpy as np
 import serial
 import re
+import urllib.request
 
 class LoverDuck(object):
 
@@ -42,7 +44,8 @@ class LoverDuck(object):
                 else:
                     pass
                 if self.t - self.last_move_t > self.LIMIT_TIME:
-                    print("No Detection")
+                    print("No Movement")
+                    self.__post_to_Kanshiho()
             ser.close()
 
     def __judge_if_move(self, x, y, z):
@@ -53,7 +56,22 @@ class LoverDuck(object):
         else:
             return False
 
+    def __post_to_Kanshiho(self):
+        """kanshihoさんにラブコールポストを送る"""
+        url = "https://loverduck.herokuapp.com/api/alert/create"
+        method = "POST"
+        headers = {"Content-Type" : "application/json"}
+
+        # PythonオブジェクトをJSONに変換する
+        obj = {"unique_id": "qe3443rfq43"} 
+        json_data = json.dumps(obj).encode("utf-8")
+        # httpリクエストを準備してPOST
+        request = urllib.request.Request(url, data=json_data, method=method, headers=headers)
+        print(request.data)
+        with urllib.request.urlopen(request) as response:
+            response_body = response.read().decode("utf-8")
+            print(response_body)
+
 if __name__=="__main__":
     loverduck = LoverDuck()
-    loverduck.connect_ble()
-
+    #loverduck.connect_ble()
