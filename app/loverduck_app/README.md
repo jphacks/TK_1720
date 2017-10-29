@@ -1,13 +1,24 @@
 # README
 
-* Ruby version: 2.4.0
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-* Rails version: 5.1.0
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
 
 * Database creation
--  `rake db:create`
--  `rake db:migrate`
 
-* Database Structure
+* Database initialization
 
-[![erd](https://github.com/jphacks/TK_1720/blob/master/app/loverduck_app/erd.pdf)](https://youtu.be/u9JsaFCgCrA)
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...

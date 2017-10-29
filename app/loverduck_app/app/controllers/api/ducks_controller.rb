@@ -2,6 +2,19 @@ module Api
   class DucksController < ApiController
     before_action :authenticate
 
+    def update_profile
+      duck = Duck.find_by(id: params[:duck_id])
+      if duck.present?
+        duck.update(name: params[:name], postal_code: params[:postal_code], address: params[:address])
+        render_ok
+      else
+        render json: {
+          message: "Duck id invalid",
+        }, status: 404
+
+      end
+    end
+
     def edit
     end
 
@@ -41,13 +54,15 @@ module Api
         render 'daily_logs', formats: 'json', handlers: 'jbuilder'
     end
 
-    def update_alertlog
-
-    end
-
+    
     def alertlog
-      duck = Duck.find(params[:duck_id])
-      @alert_logs = duck.alerts
+      puts params[:duck_id]
+      duck = Duck.find_by(id: params[:duck_id])
+      if duck.present?
+        @alert_logs = duck.alerts
+      else
+        @alert_logs = nil
+      end
       render 'alertlog', formats: 'json', handlers: 'jbuilder'
     end
 

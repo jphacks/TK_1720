@@ -1,7 +1,7 @@
 module Api
   class AuthorizationsController < ApiController
    # include ActionController::HttpAuthentication::Token::ControllerMethods
-    before_action :authenticate, only: [:profile, :edit_password]
+    before_action :authenticate, only: [:profile, :edit_password, :edit_profile]
 
     def signup
       user = User.create!(mail: params[:mail], password: params[:password], name: params[:name], tel: params[:tel])
@@ -26,8 +26,13 @@ module Api
     def profile
     end
 
-    def edit
-
+    def edit_profile
+      if current_user.present?
+        current_user.update(name: params[:name], tel: params[:tel])
+        render_ok
+      else
+        render_unauthorized
+      end
     end
 
     def edit_password

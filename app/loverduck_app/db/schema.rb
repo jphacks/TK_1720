@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171029013240) do
+ActiveRecord::Schema.define(version: 20171029160030) do
 
   create_table "alerts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "called_at"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20171029013240) do
   create_table "reaction_logs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id"
     t.integer "alert_id"
-    t.boolean "status"
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
