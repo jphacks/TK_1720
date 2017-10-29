@@ -3,7 +3,7 @@ import serial
 import re
 
 def main():
-    with serial.Serial('/dev/cu.HC-06-DevB', 9600, timeout=1) as ser:
+    with serial.Serial('/dev/cu.HC-06-DevB-1', 9600, timeout=1) as ser:
         while True:
             c = ser.readline()
             d = re.findall('[0-9]+\.+[0-9]',str(c),flags=0)
