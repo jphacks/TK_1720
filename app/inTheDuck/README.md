@@ -1,5 +1,9 @@
+
+
+
+
 # in the duck
-testing...
+アヒルの内部で使われているコードです
 
 # 使用デバイス
 リンクをクリックすると、購入できるサイトに飛びます
@@ -17,5 +21,7 @@ testing...
 
 ### [Bluetoothモジュール HC-06](http://www.aitendo.com/product/9905)
 * Arduinoのpin 10&11に繋いで使用
+* 普通のシリアル通信と同じように使えてとても便利
+
 ### [LEDモジュール neopixels](http://www.akiba-led.jp/product/963)
 * デイジーチェーン状に繋げば、一つ一つのLEDの色をコントロールすることが可能
