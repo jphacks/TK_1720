@@ -3,11 +3,14 @@ module Api
    # include ActionController::HttpAuthentication::Token::ControllerMethods
     before_action :authenticate, only: [:profile, :edit_password]
 
-
     def signup
       user = User.create!(mail: params[:mail], password: params[:password], name: params[:name], tel: params[:tel])
+      if user.present?
       token = { "access_token": user.access_token }
       render json: token
+      else
+        return_error
+      end
     end
 
     def signin

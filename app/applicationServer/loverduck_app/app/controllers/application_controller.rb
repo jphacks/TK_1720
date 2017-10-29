@@ -2,9 +2,6 @@ class ApplicationController < ActionController::API
   def authenticate
       auth_user = User.find_by(access_token: params[:access_token])
       auth_user != nil ? true : false
-      if auth_user == nil
-        render_unauthorized
-      end
   end
 
   def current_user

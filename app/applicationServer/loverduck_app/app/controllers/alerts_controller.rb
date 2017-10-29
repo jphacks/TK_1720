@@ -18,24 +18,26 @@ class AlertsController < ApplicationController
     duck = Duck.find_by(unique_id: params[:unique_id])
     alert = Alert.new(duck_id: duck.id, called_at: Time.now, status: 0 )
     if alert.save
+      start_call(duck)
       render json: alert
     else
       return_error
     end
   end
 
-  def start_call
-    tel='+819072792373'
+  def start_call(duck)
     begin
       account_id = "ACdd2768539e44741e44bb35c23cfa78d0"
       auth_token = ENV["AUTH_TOKEN"]
       client = Twilio::REST::Client.new(account_id, auth_token)
-      client.api.account.calls.create(
-        from: "+815031961573",
-        to: tel,
-        url: "https://loverduck.herokuapp.com/calling",
-        method: "GET"
-      )
+      duck.users.each do |user|
+        client.api.account.calls.create(
+          from: "+815031961573",
+          to: user.tel,
+          url: "https://loverduck.herokuapp.com/calling",
+          method: "GET"
+        )
+      end
     rescue  => e
       puts e
     end
