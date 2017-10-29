@@ -2,7 +2,7 @@
 アヒルの内部で使われているコードです
 
 # 回路図
-![circuit](images/LoverDuck_scheme.png?raw=true)
+![circuit](/images/LoverDuck_scheme.png?raw=true)
 
 # 使用デバイス
 リンクをクリックすると、購入できるサイトに飛びます
