@@ -13,6 +13,9 @@ testing...
 * I2C規格でArduinoと通信
 * 実はコンパスも搭載されている
 * 説明書にある通り、VDDとVDD_IOを接続する必要あり（これをちゃんと読んでおらず、値が返ってこなくて泣きを見た）
+* processData()内で、10msごとにこのセンサの値を読み取って、加速度の値をBluetoothで送信している
 
 ### [Bluetoothモジュール HC-06](http://www.aitendo.com/product/9905)
+* Arduinoのpin 10&11に繋いで使用
 ### [LEDモジュール neopixels](http://www.akiba-led.jp/product/963)
+* デイジーチェーン状に繋げば、一つ一つのLEDの色をコントロールすることが可能
