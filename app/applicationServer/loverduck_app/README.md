@@ -13,3 +13,4 @@ Things you may want to cover:
 * Database Structure
 
 ![erd](https://github.com/jphacks/TK_1720/blob/master/app/applicationServer/loverduck_app/erd.pdf)
+[![erd](https://github.com/jphacks/TK_1720/blob/master/app/applicationServer/loverduck_app/erd.pdf)](https://youtu.be/u9JsaFCgCrA)
