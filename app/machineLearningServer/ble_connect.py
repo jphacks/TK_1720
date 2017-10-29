@@ -9,6 +9,7 @@ class LoverDuck(object):
 
     def __init__(self):
         self.t = 0
+        self.status = 0 # 0:off, 1:on, 2: sanking 3: end
         self.last_move_t = 0
         self.LIMIT_TIME = 3000 #ms
         self.MOVE_THRESHOLD = 1000
@@ -23,7 +24,7 @@ class LoverDuck(object):
         self.base_z = 13934
         # 陸上(debug用)
         self.base_x = 256
-        self.base_y = 1088
+        self.base_y = 2000
         self.base_z = 14592
 
     def connect_ble(self):
@@ -36,8 +37,16 @@ class LoverDuck(object):
                 self.t += 10
                 c = ser.readline()
                 d = re.findall('[0-9]+\.+[0-9]',str(c),flags=0)
-                x, y, z = [float(i) for i in d]
-                print("x:", x, "y: ",y, "z: ",z)
+                try:
+                    unique_id, x, y, z, status = [float(i) for i in d]
+                    print("x:", x, "y: ",y, "z: ",z)
+                except:
+                    continue
+                # start ロジック
+                if self.__judge_if_start(status):
+                    self.__start_post_to_Kanshiho()
+                self.status = status
+                # move ロジック
                 if self.__judge_if_move(x, y, z):
                     print("Detect Movement")
                     self.last_move_t = self.t
@@ -49,6 +58,12 @@ class LoverDuck(object):
                     self.__alert_to_duck(ser)
                     break
             ser.close()
+
+    def __judge_if_start(self, new_status):
+        if self.status == 0 and new_status == 1:
+            return True
+        else:
+            return False
 
     def __judge_if_move(self, x, y, z):
         """XYZ全方向で閾値を超えていたら動きと認識
