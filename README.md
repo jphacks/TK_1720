@@ -1,4 +1,5 @@
-# Lover Duck [実際のApp](http://52.69.32.105:3000/)
+# Lover Duck 
+- [実際のApp](http://52.69.32.105:3000/)
 
 [![LoverDuck](https://github.com/jphacks/TK_1720/blob/master/app/images/main.png)](https://youtu.be/u9JsaFCgCrA)
 
