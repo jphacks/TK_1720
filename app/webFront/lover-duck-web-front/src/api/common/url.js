@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://localhost:3000'
+export const BASE_URL = 'https://loverduck.herokuapp.com'
 export const ENDPOINTS = {
   // auth
   authSignup: '/api/auth/signup',

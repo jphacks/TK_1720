@@ -5,7 +5,7 @@ import base from './apiBase'
 export default {
   createMethod (data, endpoint) {
     let params = new URLSearchParams()
-    params.append('session', sessionStorage.getItem('accessToken'))
+    params.append('access_token', sessionStorage.getItem('accessToken'))
     base.nullCheck(data)
     params.append('data', base.createJson(data))
     return axios({

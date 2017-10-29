@@ -10,7 +10,7 @@ export default {
   ) {
     return util.createMethod(params, url.ENDPOINTS.authSignup)
     .then(response => {
-      let responseData = base.createCamel(response.data.data)
+      let responseData = base.createCamel(response.data)
       callback(responseData)
     })
     .catch(error => { callbackFailed(error) })
@@ -22,7 +22,7 @@ export default {
   ) {
     return util.createMethod(params, url.ENDPOINTS.authSignin)
     .then(response => {
-      let responseData = base.createCamel(response.data.data)
+      let responseData = base.createCamel(response.data)
       callback(responseData)
     })
     .catch(error => { callbackFailed(error) })
@@ -34,7 +34,7 @@ export default {
   ) {
     return util.createMethod(params, url.ENDPOINTS.authProfile)
     .then(response => {
-      let responseData = base.createCamel(response.data.data)
+      let responseData = base.createCamel(response.data)
       callback(responseData)
     })
     .catch(error => { callbackFailed(error) })
@@ -46,7 +46,7 @@ export default {
   ) {
     return util.createMethod(params, url.ENDPOINTS.authPasswordEdit)
     .then(response => {
-      let responseData = base.createCamel(response.data.data)
+      let responseData = base.createCamel(response.data)
       callback(responseData)
     })
     .catch(error => { callbackFailed(error) })
@@ -58,7 +58,7 @@ export default {
   ) {
     return util.createMethod(params, url.ENDPOINTS.authProfileEdit)
     .then(response => {
-      let responseData = base.createCamel(response.data.data)
+      let responseData = base.createCamel(response.data)
       callback(responseData)
     })
     .catch(error => { callbackFailed(error) })
