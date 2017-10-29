@@ -1,6 +1,6 @@
 # Lover Duck
 
-[![LoverDuck](https://github.com/jphacks/TK_1720/blob/master/app/images/%E3%82%A2%E3%82%BB%E3%83%83%E3%83%88%201.png)](https://youtu.be/u9JsaFCgCrA)
+[![LoverDuck](https://github.com/jphacks/TK_1720/blob/master/app/images/main.png)](https://youtu.be/u9JsaFCgCrA)
 
 ## 製品概要
 ### お風呂 X  Tech
