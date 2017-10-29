@@ -15,7 +15,7 @@ var axios = require('axios')
 axios({
   method: 'post',
   url: 'https://loverduck.herokuapp.com/api/alert/create',
-  data: {"unique_id"=>21, "alert"=>{}}
+  data: {"unique_id": 21, "alert": {}}
 })
 .then(response => {
   console.log(response.data)

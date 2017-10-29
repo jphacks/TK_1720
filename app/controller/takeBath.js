@@ -15,7 +15,7 @@ var axios = require('axios')
 axios({
   method: 'post',
   url: 'https://loverduck.herokuapp.com/api/bath/create',
-  data: {"unique_id"=>21}
+  data: {"unique_id": 21}
 })
 .then(response => {
   console.log(response.data)
