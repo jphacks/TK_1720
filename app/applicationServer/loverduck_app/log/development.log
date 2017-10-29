@@ -3241,3 +3241,4 @@ Processing by Api::DucksController#list as */*
 Completed 200 OK in 92ms (Views: 12.7ms | ActiveRecord: 3.7ms)
 
 
+  [1m[35m (28.9ms)[0m  [1m[35mSET NAMES utf8,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
