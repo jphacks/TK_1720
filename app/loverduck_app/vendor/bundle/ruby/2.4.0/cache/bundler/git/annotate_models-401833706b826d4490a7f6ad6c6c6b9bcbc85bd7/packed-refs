@@ -1,0 +1,35 @@
+# pack-refs with: peeled fully-peeled 
+3c11de63f5f8b6ddef75c06d6c8f4faaf8c7df07 refs/heads/auto-annotate-docs
+7c7fef304d60a8cf5d9623650afe256050034709 refs/heads/develop
+11bcf586c7067251687ff8c6f2add9c11585f03f refs/heads/feature/gitlab-ci
+8341983f263e662c5e528b04d0eeec908daec1ad refs/heads/feature/rake-version-change
+5f37a974f3dff68f92b3495115f1399e7db5c584 refs/heads/master
+1f084d5e56ee885eedea256dba9e6fd871d92d39 refs/heads/pr/remove-private-keyword
+da8100a55bd32bd62e92c2def31ad31f8e0d6b18 refs/heads/release/2.6.0
+b5bf438e5079d032c528b7607899cead00da5d96 refs/heads/release/2.6.4
+9b72c6937ac47beba14c44b344e22da80859a61b refs/heads/release/2.6.6
+51a2ac505c2c4fd4a419ddf24a5c4e03b21efb29 refs/heads/revert-359-rake_11
+6b014e42c08ef5569aff955ff58452599b6739a2 refs/heads/scratch/master-merge
+0b054562b8e5564d8de04f3398053e06daa6d426 refs/heads/scratch/master-revert
+d4296834742c2a5c87300a60962797f6a4c4b672 refs/heads/types-flag
+98d00635c41c4bfe66b361196241505a5c778b7a refs/tags/v2.5.0
+da8100a55bd32bd62e92c2def31ad31f8e0d6b18 refs/tags/v2.6.0
+b8f22e9888eeb21c8a8efa600c57b9cc778b4153 refs/tags/v2.6.10
+^0146ee7b9a70d530a30a5e220c94d5e353624671
+aeec90b1dba7a489edabd2c513f46f7b0a2ea411 refs/tags/v2.6.2
+^ed327d5a15226d0b5f78ab1d47649c0fdab66c8f
+acd1c78c1668a8cc52076338e69d5fabefd9d1c9 refs/tags/v2.6.3
+b5bf438e5079d032c528b7607899cead00da5d96 refs/tags/v2.6.4
+06607bea8146d95dbb6c67049e1fd3255dd8eab8 refs/tags/v2.6.5
+^9634ea6e67851d4a9a4d0b89597a6a9d3fc4d1f4
+d69c51962a1097934a6b3a47a36acf88398fb49f refs/tags/v2.6.6
+^723176acd26e75bbfab6bab7548563cb60041d28
+a1f3f23f0053a1c3c1edb45887f7edd96065f5f5 refs/tags/v2.6.7
+^d5d55e8bcb4459c66c7ae50c911ab1189ab585d5
+35e85f6ea62a3d0916a6662b620d6636d282f0b9 refs/tags/v2.6.8
+^52ffefcbe4e89cb172e2007eda0f74ac40798727
+7201329d8f7834dbbde3e7af10205cacde8b26b9 refs/tags/v2.6.9
+a1cc2a0f4d3ba948af921d01f2e15f530ba33122 refs/tags/v2.7.0
+3b41216afb585ad50b44aaeef865be2dcbdb2c69 refs/tags/v2.7.1
+3531a2e66dcfac12f152a23a8d4a0a813dafbde9 refs/tags/v2.7.2
+^5f37a974f3dff68f92b3495115f1399e7db5c584
