@@ -1,7 +1,7 @@
 <template>
   <div class="wrap">
     <div class="container">
-      <h1>DACKを追加</h1>
+      <h1>Duckを追加</h1>
       <p　class="params">uniqueId</p>
       <input v-model="uniqueId" @input="sendUniqueId(uniqueId)" />
       <p　class="params">postalCode</p>
