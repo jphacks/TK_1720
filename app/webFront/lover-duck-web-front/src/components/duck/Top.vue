@@ -15,8 +15,8 @@
         </router-link>
       </div>
       <div class="button">
-        <router-link :to="{ name: 'CreateDuck'}"><button>Duckを登録</button></router-link>
-        <router-link :to="{ name: 'RegisterDuck'}"><button>Duckを追加</button></router-link>
+        <router-link :to="{ name: 'CreateDuck'}"><button>Duckを追加</button></router-link>
+        <router-link :to="{ name: 'RegisterDuck'}"><button>Duckを登録</button></router-link>
       </div>
     </div>
   </div>
