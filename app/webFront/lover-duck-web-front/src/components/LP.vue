@@ -1,11 +1,13 @@
 <template>
   <div class="lp">
     <div class="alert">
-      JPHACKS 審査員のみなさんへ<br />
-      mail: test@gmail.com <br />
-      password: test, <br />
-      でsigninしてみてください。<br />
-      <a href="/signin" class="signin">signinはこちら</a>
+      <div class="text">
+        JPHACKS 審査員のみなさんへ<br />
+        mail: test@gmail.com <br />
+        password: test, <br />
+        でsigninしてみてください。<br />
+        <a href="/signin" class="signin">signinはこちら</a>
+      </div>
     </div>
     <img class="logo" src="../assets/loverduck_logo.svg" />
     <h1>大切な人の、大切な時間と命を見守る。</h1>
@@ -70,6 +72,6 @@ a {
   text-align: center;
   padding: 50px 50px 30px;
   margin: 10px;
-  background-color: #fcf8e3;
+  background-color: rgba(252, 248, 227, 0.5);
 }
 </style>

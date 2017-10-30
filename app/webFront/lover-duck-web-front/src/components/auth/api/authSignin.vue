@@ -81,7 +81,7 @@ button {
   text-align: center;
   padding: 50px;
   margin: 10px;
-  background-color: #fcf8e3!important;
+  background-color: rgba(252, 248, 227, 0.5);
 }
 </style>
 <script>
