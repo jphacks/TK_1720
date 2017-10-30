@@ -26,7 +26,9 @@
 
 .wrap {
   background-color: #fcf8e3!important;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
+  padding-bottom: 100px;
 }
 h1 {
   color: #111111;

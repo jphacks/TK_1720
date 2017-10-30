@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <header-vue></header-vue>
+    <header-vue class="headder"></header-vue>
     <div class="content">
       <router-view></router-view>
     </div>
@@ -66,6 +66,11 @@ export default {
   letter-spacing: 1px;
   line-height: 2em;
   text-decoration: none;
+}
+
+.headder {
+  position: fixed;
+  width: 100%;
 }
 
 .content {
