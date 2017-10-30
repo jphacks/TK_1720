@@ -70,7 +70,7 @@
 ### 独自開発技術（Hack Dayで開発したもの）
 #### 2日間に開発した独自の機能・技術
 * 水面の加速度から人が入浴中 / 溺れている を識別するデータ解析(お風呂の画像を取るのはプライバシー上危険なため,他のセンサを活用した.)
-＊ 課題設計、アイデア出し、全開発工程
+* 課題設計、アイデア出し、全開発工程
 
 #### アプリケーション画面
 [![LoverDuck](https://github.com/jphacks/TK_1720/blob/master/app/images/ducks.png)](https://youtu.be/u9JsaFCgCrA)
