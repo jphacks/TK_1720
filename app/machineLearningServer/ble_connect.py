@@ -2,7 +2,6 @@
 import json
 import numpy as np
 import serial
-import re
 import urllib.request
 
 class LoverDuck(object):
@@ -35,16 +34,25 @@ class LoverDuck(object):
             while True:
                 # 時間update
                 self.t += 10
-                c = ser.readline()
-                d = re.findall('[0-9]+\.+[0-9]',str(c),flags=0)
+                # 信号受信
+                byte_line = ser.readline()
+                str_line = byte_line.decode('utf-8') 
                 try:
-                    unique_id, x, y, z, status = [float(i) for i in d]
+                    unique_id, x, y, z, status = str_line.split()
+                    # type convert
+                    x = float(x)
+                    y = float(y)
+                    z = float(z)
+                    unique_id = str(unique_id)
+                    status = int(status)
                     print("x:", x, "y: ",y, "z: ",z)
                 except:
                     continue
                 # start ロジック
                 if self.__judge_if_start(status):
                     self.__start_post_to_Kanshiho()
+                if self.__judge_if_end(status):
+                    self.__end_post_to_Kanshiho()
                 self.status = status
                 # move ロジック
                 if self.__judge_if_move(x, y, z):
@@ -60,7 +68,17 @@ class LoverDuck(object):
             ser.close()
 
     def __judge_if_start(self, new_status):
+        """BLE接続した状態で、ボタンが押され、ステータスが0->1に変わるとtrue
+        """
         if self.status == 0 and new_status == 1:
+            return True
+        else:
+            return False
+
+    def __judge_if_end(self, new_status):
+        """BLE接続した状態で、体が十分に温まり、ステータスが1->3に変わるとtrue
+        """
+        if self.status == 1 and new_status == 3:
             return True
         else:
             return False
@@ -85,13 +103,33 @@ class LoverDuck(object):
         json_data = json.dumps(obj).encode("utf-8")
         # httpリクエストを準備してPOST
         request = urllib.request.Request(url, data=json_data, method=method, headers=headers)
+        print("POST to Kanshiho")
+        print(request.data)
+        with urllib.request.urlopen(request) as response:
+            response_body = response.read().decode("utf-8")
+            print(response_body)
+
+    def __end_post_to_Kanshiho(self):
+        """Kanshihoさんにお風呂に入ったことを伝える
+        """
+        url = "https://loverduck.herokuapp.com/api/bath/end"
+        method = "POST"
+        headers = {"Content-Type" : "application/json"}
+
+        # PythonオブジェクトをJSONに変換する
+        obj = {"unique_id": "qe3443rfq43"} 
+        json_data = json.dumps(obj).encode("utf-8")
+        # httpリクエストを準備してPOST
+        request = urllib.request.Request(url, data=json_data, method=method, headers=headers)
+        print("POST to Kanshiho")
         print(request.data)
         with urllib.request.urlopen(request) as response:
             response_body = response.read().decode("utf-8")
             print(response_body)
 
     def __alert_post_to_Kanshiho(self):
-        """kanshihoさんにラブコールポストを送る"""
+        """Kanshihoさんにラブコールポストを送る
+        """
         url = "https://loverduck.herokuapp.com/api/alert/create"
         method = "POST"
         headers = {"Content-Type" : "application/json"}
@@ -101,14 +139,17 @@ class LoverDuck(object):
         json_data = json.dumps(obj).encode("utf-8")
         # httpリクエストを準備してPOST
         request = urllib.request.Request(url, data=json_data, method=method, headers=headers)
+        print("POST to Kanshiho")
         print(request.data)
         with urllib.request.urlopen(request) as response:
             response_body = response.read().decode("utf-8")
             print(response_body)
 
     def __alert_to_duck(self, ser):    
-        flag=bytes("a",'utf-8')
-        #シリアル通信で文字を送信する際は, byte文字列に変換する
+        """Duckにアラートを送る。
+        """
+        print("Alert to Duck")
+        flag=bytes("a",'utf-8') #シリアル通信で文字を送信する際は, byte文字列に変換する
         ser.write(flag)
 
 if __name__=="__main__":
