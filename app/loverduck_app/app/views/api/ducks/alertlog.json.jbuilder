@@ -1,3 +1,3 @@
 json.array!(@alert_logs) do |log|
-  json.extract! log, :called_at, :status
+  json.extract! log, :called_at, :status, :id
 end
