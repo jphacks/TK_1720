@@ -15,7 +15,7 @@ class LoverDuck(object):
         self.get_base_value()
 
     def get_base_value(self):
-        """実験的に得た値を使用
+        """実験的に得た値を使用、ここのパーソナル化に取り組む(TODO)
         """
         # 水上
         self.base_x = -2737
@@ -34,6 +34,7 @@ class LoverDuck(object):
             while True:
                 # 時間update
                 self.t += 10
+                print(self.t)
                 # 信号受信
                 byte_line = ser.readline()
                 str_line = byte_line.decode('utf-8') 
@@ -50,10 +51,15 @@ class LoverDuck(object):
                     continue
                 # start ロジック
                 if self.__judge_if_start(status):
+                    print("Start")
                     self.__start_post_to_Kanshiho()
                 if self.__judge_if_end(status):
                     self.__end_post_to_Kanshiho()
+                    print("End")
+                    break
                 self.status = status
+                if self.status == 0:
+                    continue
                 # move ロジック
                 if self.__judge_if_move(x, y, z):
                     print("Detect Movement")
