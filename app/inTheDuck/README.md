@@ -1,6 +1,6 @@
 # in the duck
-アヒルの内部で使われているコードです
-
+アヒルのハードウェア及び内部で使われているコードについての説明です
+![duck-hardware](https://github.com/jphacks/TK_1720/blob/master/app/inTheDuck/images/IMG-4930.JPG)
 # 回路図
 ![circuit](https://github.com/jphacks/TK_1720/blob/master/app/inTheDuck/images/LoverDuck_schem.png)
 
@@ -24,3 +24,5 @@
 
 ### [LEDモジュール neopixels](http://www.akiba-led.jp/product/963)
 * デイジーチェーン状に繋げば、一つ一つのLEDの色をコントロールすることが可能
+
+![duck-in-bath](https://github.com/jphacks/TK_1720/blob/master/app/inTheDuck/images/IMG-4932.JPG)
