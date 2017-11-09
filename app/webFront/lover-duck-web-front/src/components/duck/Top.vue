@@ -26,7 +26,7 @@
     width: 100%;
     height: 100vh;
     background-color: #fcf8e3;
-    padding-top: 150px;
+    padding-top: 50px;
   }
   .container {
     margin-left: 200px;

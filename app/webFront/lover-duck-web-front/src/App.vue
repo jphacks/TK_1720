@@ -69,7 +69,6 @@ export default {
 }
 
 .headder {
-  position: fixed;
   width: 100%;
 }
 
