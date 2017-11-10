@@ -8,6 +8,9 @@
               class="drop"
               @drop="handleDrop">
               <v-layout row wrap>
+                <v-flex xs12>
+                  <span style="text-align: center;">ここにAppをドロップしてください</span>
+                </v-flex>
                 <v-flex xs4 v-for="img in imgs" :key="imgs.indexOf(img)">
                   <drag
                   :transferData="imgs.indexOf(img)"
@@ -115,7 +118,7 @@ export default {
   methods: {
     handleDrop (img) {
       try {
-        if (this.imgs.length < 6 && this.imgs.indexOf(img.img) === -1) {
+        if (this.imgs.length < 3 && this.imgs.indexOf(img.img) === -1) {
           this.imgs.push(img.img)
           let obj = {
             title: 'App追加',
