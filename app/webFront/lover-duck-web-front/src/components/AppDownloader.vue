@@ -67,7 +67,7 @@
 .list {
 }
 .app {
-  height: 100%;
+  min-height: 80vh;
   background-color: white;
 }
 .drag {
