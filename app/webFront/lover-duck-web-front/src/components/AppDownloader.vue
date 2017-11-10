@@ -65,6 +65,7 @@
 <style scoped>
 #inspire {
   background-color: #fcf8e3!important;
+  padding: 10px;
 }
 
 .dack {
