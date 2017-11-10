@@ -3,16 +3,17 @@
   <div class="all">
     <div class="container">
       <div class="duck" v-for="duck in list">
-        <router-link :to="{ name: 'DuckDetail', params: { id: duck.id}}">
-          <div class="duck-content">
+        <div class="duck-content">
+          <router-link :to="{ name: 'DuckDetail', params: { id: duck.id}}">
             <img class="duck-image" src="../../assets/duck.png" alt="duck image">
             <h1>{{ duck.name }}</h1>
-            <h4>
-              <span class="in" v-if="duck.status">入浴中</span>
-              <span v-else>入浴していません</span>
-            </h4>
-          </div>
-        </router-link>
+          </router-link>
+          <h4>
+            <span class="in" v-if="duck.status">入浴中</span>
+            <span v-else>入浴していません</span>
+            <a href="/store">duckをカスタマイズする</a>
+          </h4>
+        </div>
       </div>
       <div class="button">
         <router-link :to="{ name: 'CreateDuck'}"><button>Duckを追加</button></router-link>
