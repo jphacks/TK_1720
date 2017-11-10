@@ -33,7 +33,7 @@
                   <v-list-tile avatar v-else v-bind:key="item.title" @click="">
                     <v-list-tile-avatar>
                       <drag
-                        :transferData="item.avatar"
+                        :transferData="{img: item.avatar, text: item.title}"
                         :key="item.avater">
                         <img v-bind:src="item.avatar">
                       </drag>
@@ -50,6 +50,10 @@
         </v-flex>
       </v-layout>
     </v-container>
+    <simplert :useRadius="true"
+          :useIcon="true"
+          ref="simplert">
+    </simplert>
   </v-app>
 </template>
 <style lang="stylus">
@@ -88,11 +92,13 @@
 
 <script>
 import { Drag, Drop } from 'vue-drag-drop'
+import Simplert from 'vue2-simplert'
 
 export default {
   components: {
     Drag,
-    Drop
+    Drop,
+    Simplert
   },
   data () {
     return {
@@ -108,8 +114,19 @@ export default {
   },
   methods: {
     handleDrop (img) {
-      if (this.imgs.length < 6) {
-        this.imgs.push(img)
+      try {
+        if (this.imgs.length < 6) {
+          this.imgs.push(img.img)
+        }
+        let obj = {
+          title: 'App追加',
+          message: img.text + 'を追加しました',
+          type: 'success',
+          hideAllButton: true
+        }
+        this.$refs.simplert.openSimplert(obj)
+      } catch (e) {
+        return
       }
     },
     removeItems (index) {
