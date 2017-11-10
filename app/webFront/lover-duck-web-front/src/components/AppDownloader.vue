@@ -115,16 +115,32 @@ export default {
   methods: {
     handleDrop (img) {
       try {
-        if (this.imgs.length < 6) {
+        if (this.imgs.length < 6 && this.imgs.indexOf(img.img) === -1) {
           this.imgs.push(img.img)
+          let obj = {
+            title: 'App追加',
+            message: img.text + 'を追加しました。',
+            type: 'success',
+            hideAllButton: true
+          }
+          this.$refs.simplert.openSimplert(obj)
+        } else if (this.imgs.indexOf(img.img) !== -1) {
+          let obj = {
+            title: 'Error',
+            message: img.text + 'はすでに追加済みです。',
+            type: 'error',
+            hideAllButton: true
+          }
+          this.$refs.simplert.openSimplert(obj)
+        } else {
+          let obj = {
+            title: 'Error',
+            message: 'duckに空き容量がありません。',
+            type: 'error',
+            hideAllButton: true
+          }
+          this.$refs.simplert.openSimplert(obj)
         }
-        let obj = {
-          title: 'App追加',
-          message: img.text + 'を追加しました',
-          type: 'success',
-          hideAllButton: true
-        }
-        this.$refs.simplert.openSimplert(obj)
       } catch (e) {
         return
       }
