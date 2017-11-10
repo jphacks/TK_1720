@@ -82,7 +82,7 @@
   max-width: 24vw;
   min-height: 7vw;
 	height: auto;
-  border: rgba(150,150,150,.8) dashed 1rem;
+  border: rgba(150,150,150,.5) dashed 1rem;
   border-radius: 10px;
 }
 .list-img {
