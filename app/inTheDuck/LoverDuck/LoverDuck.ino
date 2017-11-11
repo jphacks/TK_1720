@@ -9,9 +9,9 @@ SoftwareSerial BT(10,11);
 
 #define tonePin 2
 #define buttonPin 3
-#define ledPinA 6 //6 leds here
+#define ledPinA 7 //6 leds here
 #define ledNumA 6
-#define ledPinB 7 //4 leds here
+#define ledPinB 6 //4 leds here
 #define ledNumB 4
 
 Adafruit_NeoPixel pixelsA = Adafruit_NeoPixel(ledNumA, ledPinA, NEO_GRB + NEO_KHZ800);
