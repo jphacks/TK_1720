@@ -15,6 +15,8 @@ import RegisterDuck from '@/components/duck/duckRegister'
 import DuckTop from '@/components/duck/Top'
 import DuckDetail from '@/components/duck/DuckDetail'
 
+import AppStore from '@/components/AppDownloader'
+
 // validationです、コメントアウトを外して使ってください
 // function authValidater () {
 //  let validation = sessionStorage.getItem('accessToken')
@@ -79,6 +81,11 @@ export default new Router({
       path: '/duck/detail/:id',
       name: 'DuckDetail',
       component: DuckDetail
+    },
+    {
+      path: '/store',
+      name: 'AppStore',
+      component: AppStore
     }
   ]
 })

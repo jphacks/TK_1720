@@ -31,7 +31,7 @@
     height: 100%;
     min-height: 100vh;
     background-color: #fcf8e3;
-    padding-top: 100px;
+    padding-top: 50px;
     padding-bottom: 110px;
   }
 

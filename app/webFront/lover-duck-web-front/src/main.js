@@ -5,12 +5,10 @@ import App from './App'
 import router from './router'
 import store from './vuex'
 import { sync } from 'vuex-router-sync'
-import BootstrapVue from 'bootstrap-vue'
 
 import Vuetify from 'vuetify'
 
 Vue.use(Vuetify)
-Vue.use(BootstrapVue)
 
 Vue.config.productionTip = false
 
