@@ -1,5 +1,5 @@
 #include <Adafruit_NeoPixel.h>
-//test
+
 #include <Adafruit_Sensor.h>
 #include <Adafruit_LSM303.h>
 #include <Wire.h>
@@ -31,6 +31,8 @@ int buttonState;
 int lastButtonState=HIGH;
 unsigned long lastDebounceTime=0;
 unsigned long debounceDelay=50;
+unsigned long lastButtonTime=0;
+unsigned long longPush=1000;  // how long to push to be registered as a long push
 
 unsigned long startCurrentMode=0;
 
@@ -84,11 +86,40 @@ void checkButton(){
       if(reading != buttonState){
         buttonState=reading;
         if(buttonState==LOW){
-          if(mode != 0){
-            changeMode(0);
+          // if(mode != 0){
+          //   changeMode(0);
+          // }
+          // else{
+          //   changeMode(1);
+          // }
+          lastButtonTime=millis();
+        }
+        else{
+          // every process is done when the button is released
+          if(millis()-lastButtonTime>longPush){
+            // register a long press
+            if(mode==0){
+              changeMode(1);
+            }
+            else{
+              changeMode(0);
+            }
           }
           else{
-            changeMode(1);
+            // register a short press
+            switch (mode) {
+              case 1:
+                changeMode(4);
+                break;
+              case 4:
+                changeMode(5);
+                break;
+              case 5:
+                changeMode(1);
+                break;
+              default:
+                break;
+            }
           }
         }
       }
@@ -164,15 +195,6 @@ int comRead(){
   return value;
 }
 
-//void warning(){
-//  for(int i=0; i<4; i++){
-//    tone(tonePin, 900);
-//    delay(500);
-//    tone(tonePin, 700);
-//    delay(250);
-//  }
-//  noTone(tonePin);
-//}
 
 int LEDangles[]={355, 5, 67, 77, 139, 149, 211, 221, 283, 293};
 void setLED(int i, int c[]){
@@ -190,27 +212,30 @@ void setLED(int i, int c[]){
     pixelsB.show();
   }
 }
-void setColors(){
-  switch(mode){
-    case 1:{
-      float ratio= 0.7+ 0.3 * sin(((millis()/10)%360)*3.14/180);
-      int tmp[3];
-      for(int i=0; i<3; i++){
-        long a=(endColor[i]-startColor[i])*(millis()-startCurrentMode);
-        if(endColor[i]-startColor[i] <0){
-          a=-abs(a);
-        }
-        color[i]=(a/mode1Duration+startColor[i])%256;
-//        color[i]=startColor[i];
-        color[i]=(int)(color[i]*ratio);
-      }
 
-      if(millis()-startCurrentMode>mode1Duration){
-        changeMode(3);
-      }
-      break;}
-    case 2:
-      if((millis()-startCurrentMode)%1000<600){
+// return how long the first blinking sequence lasts
+unsigned long waitDuration(int myMode){
+  unsigned long value=600;
+  switch(myMode){
+    case 1:
+      value=value;
+      break;
+    case 4:
+      value=2*value;
+      break;
+    case 5:
+      value=3*value;
+      break;
+    default:
+      value=0;
+  }
+  return value;
+}
+void setColors(){
+  if(mode==1 || mode ==4 || mode ==5){
+    if((millis()-startCurrentMode)<waitDuration(mode)){
+      // blink if the current mode just started
+      if((millis()-startCurrentMode)%600 < 300){
         color[0]=200;
         color[1]=200;
         color[2]=200;
@@ -220,28 +245,54 @@ void setColors(){
         color[1]=0;
         color[2]=0;
       }
-      //possible drowning
-      break;
-    case 3:
-      //10 minutes have passed
-      if((millis()-startCurrentMode)%2000<1000){
-        color[0]=0;
-        color[1]=200;
-        color[2]=0;
+    }
+    else{
+      float ratio= 0.7+ 0.3 * sin(((millis()/10)%360)*3.14/180);
+      int tmp[3];
+      for(int i=0; i<3; i++){
+        long a=(endColor[i]-startColor[i])*(millis()-startCurrentMode);
+        if(endColor[i]-startColor[i] <0){
+          a=-abs(a);
+        }
+        color[i]=(a/mode1Duration+startColor[i])%256;
+  //        color[i]=startColor[i];
+        color[i]=(int)(color[i]*ratio);
       }
-      else{
-        color[0]=0;
-        color[1]=0;
-        color[2]=0;
+      if(millis()-startCurrentMode>mode1Duration){
+        changeMode(3);
       }
-      break;
-    case 0:
-        color[0]=0;
-        color[1]=0;
-        color[2]=0;
-        break;
-    default:
-      break;
+    }
+  }
+  else if(mode==2){
+    if((millis()-startCurrentMode)%1000<600){
+      color[0]=200;
+      color[1]=200;
+      color[2]=200;
+    }
+    else{
+      color[0]=0;
+      color[1]=0;
+      color[2]=0;
+    }
+    //possible drowning
+  }
+  else if(mode==3){
+    //10 minutes have passed
+    if((millis()-startCurrentMode)%2000<1000){
+      color[0]=0;
+      color[1]=200;
+      color[2]=0;
+    }
+    else{
+      color[0]=0;
+      color[1]=0;
+      color[2]=0;
+    }
+  }
+  else{
+    color[0]=0;
+    color[1]=0;
+    color[2]=0;
   }
   for(int i=0; i<10; i++){
     setLED(i, color);
@@ -260,6 +311,12 @@ void changeMode(int i){
     case 3:
       //warning mode- 10minutes have passed
       break;
+    case 4:
+      //radio mode- still is counting 10 minutes
+      break;
+    case 5:
+      //math mode
+      break;
     default:
       break;
   }
@@ -269,21 +326,22 @@ void changeMode(int i){
 
 //phi is angle of LED
 //theta is edge of current LED lgihting state
-float getRatio(float phi, float theta){
-  float width=100;
-  if(theta-width<0){
-    if(theta<phi || 360+theta-width < phi){
-      return 0.0;
-    }
-    else if(phi<=theta){
-      return (phi-theta+width)/width;
-    }
-    else{
-      return (phi-360.0-theta+width)/width;
-    }
-  }
-  else{
-    return (phi-theta+width)/width;
-  }
-  return 0.0;
-}
+// I wrote this because I was gonna make the lit-up segment rotate, but eh, so much for that.
+// float getRatio(float phi, float theta){
+//   float width=100;
+//   if(theta-width<0){
+//     if(theta<phi || 360+theta-width < phi){
+//       return 0.0;
+//     }
+//     else if(phi<=theta){
+//       return (phi-theta+width)/width;
+//     }
+//     else{
+//       return (phi-360.0-theta+width)/width;
+//     }
+//   }
+//   else{
+//     return (phi-theta+width)/width;
+//   }
+//   return 0.0;
+// }
