@@ -17,7 +17,7 @@
                   :key="imgs.indexOf(img)"
                   class="list-img"
                   >
-                    <img v-bind:src="img"/>
+                    <img v-bind:src="img" class="img"/>
                   </drag>
                 </v-flex>
               </v-layout>
@@ -74,6 +74,10 @@
 }
 .list {
 }
+.img {
+  width: 100%;
+  height: auto;
+}
 .app {
   min-height: 80vh;
   background-color: white;
@@ -111,7 +115,11 @@ export default {
         { divider: true, inset: true },
         { avatar: '../../static/radio.svg', title: 'ラジオアプリ', subtitle: "<span class='grey--text text--darken-2'>入浴中にダックからラジオを流すことができます。</span>" },
         { divider: true, inset: true },
-        { avatar: '../../static/math.svg', title: '子供のための計算アプリ', subtitle: "<span class='grey--text text--darken-2'>お風呂に入りながら算数の勉強をすることができます。</span>" }
+        { avatar: '../../static/math.svg', title: '子供のための計算アプリ', subtitle: "<span class='grey--text text--darken-2'>お風呂に入りながら算数の勉強をすることができます。</span>" },
+        { divider: true, inset: true },
+        { avatar: '../../static/muzic.png', title: 'お風呂で歌うカラオケアプリ', subtitle: "<span class='grey--text text--darken-2'>お気に入りの曲を追加しておくと、お風呂でカラオケができます。</span>" },
+        { divider: true, inset: true },
+        { avatar: '../../static/tel.png', title: 'お風呂で電話アプリ', subtitle: "<span class='grey--text text--darken-2'>お風呂に入りながら、ペアリングしたダックやスマートフォンと電話で話すことができます。</span>" }
       ],
       imgs: []
     }
