@@ -9,7 +9,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="log in list">
+        <tr v-for="log in list.reverse()">
           <th scope="row">{{ list.indexOf(log) + 1 }}</th>
           <td>{{ log.startAt }}</td>
           <td>{{ log.endAt }}</td>
