@@ -17,9 +17,9 @@ SoftwareSerial BT(10,11);
 Adafruit_NeoPixel pixelsA = Adafruit_NeoPixel(ledNumA, ledPinA, NEO_GRB + NEO_KHZ800);
 Adafruit_NeoPixel pixelsB = Adafruit_NeoPixel(ledNumB, ledPinB, NEO_GRB + NEO_KHZ800);
 int color[]={0,250,50};
-int startColor[]={0, 0, 200};
-int endColor[]={0, 200, 0};
-unsigned long mode1Duration=4*60*1000;
+int startColor[]={0, 0, 250};
+int endColor[]={0, 250, 0};
+unsigned long mode1Duration=20000;
 
 boolean notFirst=true;
 
@@ -131,7 +131,9 @@ unsigned long previousProcess=0;
 unsigned long sendInterval=50;
 void processData(){
   if(mode==0){
-    return;
+//    return;
+//    IRL, it's not desirable to send BT even when it's supposed to be on
+//    demo-wise, only the LED changes when on and off
   }
   if((millis()-previousProcess)>sendInterval){
     float data[6];
@@ -259,13 +261,13 @@ void setColors(){
 //        }
 //        color[i]=(a/mode1Duration+startColor[i])%256;
 //      }
-
+      float ratio= 0.7+ 0.3 * sin(((millis()/10)%360)*3.14/180);
       float ratio_general=(float)(millis()-startCurrentMode)/mode1Duration;
 //      Serial.print(ratio_general);
 //     for debug
       
       for(int i=0; i<3 ; i++){
-        color[i]=(int)(ratio_general*(endColor[i]-startColor[i])) + startColor;
+        color[i]=(int)(ratio*((ratio_general*(endColor[i]-startColor[i])) + startColor[i]));
       }
       if(!isBT){
         Serial.println((String)color[0]+","+(String)color[1]+","+(String)color[2]);
