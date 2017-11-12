@@ -17,11 +17,11 @@ SoftwareSerial BT(10,11);
 Adafruit_NeoPixel pixelsA = Adafruit_NeoPixel(ledNumA, ledPinA, NEO_GRB + NEO_KHZ800);
 Adafruit_NeoPixel pixelsB = Adafruit_NeoPixel(ledNumB, ledPinB, NEO_GRB + NEO_KHZ800);
 int color[]={0,250,50};
-int startColor[]={0, 0, 0};
-int endColor[]={0, 0, 250};
-unsigned long mode1Duration=1*10*1000;
+int startColor[]={0, 0, 200};
+int endColor[]={0, 200, 0};
+unsigned long mode1Duration=4*60*1000;
 
-boolean notFirst=false;
+boolean notFirst=true;
 
 
 Adafruit_LSM303 lsm;
@@ -64,9 +64,10 @@ void loop() {
 
   if(comAvailable()>0){
     int data=comRead();
-    if((0 <= data) && (data <= 5)){
-      changeMode(data);
-    }
+//    if((0 <= data) && (data <= 5)){
+//      changeMode(data);
+//    }
+      changeMode(2);
   }
   setColors();
 }
@@ -251,13 +252,23 @@ void setColors(){
       }
     }
     else{
-      for(int i=0; i<3; i++){
-        long a=(endColor[i]-startColor[i])*(millis()-startCurrentMode);
-        if(endColor[i]-startColor[i] <0){
-          a=-abs(a);
-        }
-        color[i]=(a/mode1Duration+startColor[i])%256;
-        color[i]=(int)color[i];
+//      for(int i=0; i<3; i++){
+//        long a=(endColor[i]-startColor[i])*(millis()-startCurrentMode);
+//        if(endColor[i]-startColor[i] <0){
+//          a=-abs(a);
+//        }
+//        color[i]=(a/mode1Duration+startColor[i])%256;
+//      }
+
+      float ratio_general=(float)(millis()-startCurrentMode)/mode1Duration;
+//      Serial.print(ratio_general);
+//     for debug
+      
+      for(int i=0; i<3 ; i++){
+        color[i]=(int)(ratio_general*(endColor[i]-startColor[i])) + startColor;
+      }
+      if(!isBT){
+        Serial.println((String)color[0]+","+(String)color[1]+","+(String)color[2]);
       }
       if(millis()-startCurrentMode>mode1Duration){
         changeMode(3);
