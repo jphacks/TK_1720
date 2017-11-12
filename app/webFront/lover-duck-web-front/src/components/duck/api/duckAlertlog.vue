@@ -9,7 +9,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="log in list.slice(0, 3)">
+          <tr v-for="log in list.reverse()">
             <th scope="row">{{ list.indexOf(log) + 1 }}</th>
             <td>{{ log.calledAt }}</td>
             <td>
@@ -103,7 +103,6 @@ export default {
   watch: {
     getDuckAlertlogResponse (data) {
       this.list = data
-      this.list.reverse()
     },
     getDuckAlertlogUpdateResponse (data) {
       this.toggle = false
