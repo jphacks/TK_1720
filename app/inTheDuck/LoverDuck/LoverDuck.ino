@@ -17,9 +17,11 @@ SoftwareSerial BT(10,11);
 Adafruit_NeoPixel pixelsA = Adafruit_NeoPixel(ledNumA, ledPinA, NEO_GRB + NEO_KHZ800);
 Adafruit_NeoPixel pixelsB = Adafruit_NeoPixel(ledNumB, ledPinB, NEO_GRB + NEO_KHZ800);
 int color[]={0,250,50};
-int startColor[]={0, 0, 250};
-int endColor[]={0, 250, 0};
-unsigned long mode1Duration=1*60*1000;
+int startColor[]={0, 0, 0};
+int endColor[]={0, 0, 250};
+unsigned long mode1Duration=1*10*1000;
+
+boolean notFirst=false;
 
 
 Adafruit_LSM303 lsm;
@@ -62,15 +64,9 @@ void loop() {
 
   if(comAvailable()>0){
     int data=comRead();
-//    switch(data){
-//      case 1:
-//        changeMode(2);
-//        break;
-//      default:
-//        //do nothing
-//        break;
-//    }
-  changeMode(2);
+    if((0 <= data) && (data <= 5)){
+      changeMode(data);
+    }
   }
   setColors();
 }
@@ -105,7 +101,7 @@ void checkButton(){
               changeMode(0);
             }
           }
-          else{
+          else if (notFirst){
             // register a short press
             switch (mode) {
               case 1:
@@ -121,6 +117,9 @@ void checkButton(){
                 break;
             }
           }
+          else{
+            notFirst=true;
+          }
         }
       }
       }
@@ -130,6 +129,9 @@ void checkButton(){
 unsigned long previousProcess=0;
 unsigned long sendInterval=50;
 void processData(){
+  if(mode==0){
+    return;
+  }
   if((millis()-previousProcess)>sendInterval){
     float data[6];
     getData(data);
@@ -185,14 +187,16 @@ boolean comAvailable(){
 }
 
 int comRead(){
-  int value;
+  char value;
   if(isBT){
-    value=BT.parseInt();
+    value=BT.read();
   }
   else{
-    value=Serial.parseInt();
+    value=Serial.read();
+    Serial.print((int)(value-48));
+    //for debug
   }
-  return value;
+  return (int)(value-48);
 }
 
 
@@ -232,7 +236,7 @@ unsigned long waitDuration(int myMode){
   return value;
 }
 void setColors(){
-  if(mode==1 || mode ==4 || mode ==5){
+  if((mode==1 || mode ==4) || mode ==5){
     if((millis()-startCurrentMode)<waitDuration(mode)){
       // blink if the current mode just started
       if((millis()-startCurrentMode)%600 < 300){
@@ -247,16 +251,13 @@ void setColors(){
       }
     }
     else{
-      float ratio= 0.7+ 0.3 * sin(((millis()/10)%360)*3.14/180);
-      int tmp[3];
       for(int i=0; i<3; i++){
         long a=(endColor[i]-startColor[i])*(millis()-startCurrentMode);
         if(endColor[i]-startColor[i] <0){
           a=-abs(a);
         }
         color[i]=(a/mode1Duration+startColor[i])%256;
-  //        color[i]=startColor[i];
-        color[i]=(int)(color[i]*ratio);
+        color[i]=(int)color[i];
       }
       if(millis()-startCurrentMode>mode1Duration){
         changeMode(3);
