@@ -9,7 +9,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="log in list.reverse()">
+          <tr v-for="log in listsOfAlert">
             <th scope="row">{{ list.indexOf(log) + 1 }}</th>
             <td>{{ log.calledAt }}</td>
             <td>
@@ -98,7 +98,11 @@ export default {
     ...mapGetters('duck', [
       'getDuckAlertlogResponse',
       'getDuckAlertlogUpdateResponse' // update
-    ])
+    ]),
+    listsOfAlert () {
+      this.list.reverse()
+      return this.list.slice(0, 3)
+    }
   },
   watch: {
     getDuckAlertlogResponse (data) {
