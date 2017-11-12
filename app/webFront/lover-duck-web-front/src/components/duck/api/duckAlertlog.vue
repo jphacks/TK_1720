@@ -102,7 +102,8 @@ export default {
   },
   watch: {
     getDuckAlertlogResponse (data) {
-      this.list = data.reverse()
+      this.list = data
+      this.list.reverse()
     },
     getDuckAlertlogUpdateResponse (data) {
       this.toggle = false
