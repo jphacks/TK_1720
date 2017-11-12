@@ -9,7 +9,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="log in list.reverse().slice(0, 3)">
+          <tr v-for="log in list.slice(-1, 3).reverse()">
             <th scope="row">{{ list.indexOf(log) + 1 }}</th>
             <td>{{ log.calledAt }}</td>
             <td>
